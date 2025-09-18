@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      APP_URL: ${{ secrets.APP_URL }} 
+      APP_URL: ${{ secrets.APP_URL }}
 
     steps:
       - name: Checkout do código
@@ -34,7 +34,8 @@ jobs:
         run: |
           pytest -v --color=yes --tb=short --html=report.html --self-contained-html
 
-      - name: Publicar relatório HTML como artefato
+      - name: Publicar relatório HTML como artefato (sempre executar)
+        if: always()                     # garante execução mesmo se o pytest falhar
         uses: actions/upload-artifact@v4
         with:
           name: Relatorio-Testes
