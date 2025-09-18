@@ -9,9 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      LINK: ${{ secrets.APP_URL }}
-      
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4

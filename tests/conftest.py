@@ -13,9 +13,9 @@ def browser():
 
 @pytest.fixture
 def page(browser):
-    link = os.getenv("LINK")
+    link = os.getenv("APP_URL")
     if not link:
-        raise ValueError("A variável LINK não está definida.")
+        raise ValueError("A variável APP_URL não está definida.")
     context = browser.new_context()
     page = context.new_page()
     page.goto(link) 
