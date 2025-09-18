@@ -27,8 +27,15 @@ jobs:
           pip install -r requirements.txt
 
       - name: Instalar Chromium apenas
-        run: 
+        run: |
           playwright install chromium
 
-      - name: Rodar testes com Pytest
-        run: pytest -v
+      - name: Rodar testes com Pytest (saída colorida e HTML)
+        run: |
+          pytest -v --color=yes --tb=short --html=report.html --self-contained-html
+
+      - name: Publicar relatório HTML como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: Relatorio-Testes
+          path: report.html
