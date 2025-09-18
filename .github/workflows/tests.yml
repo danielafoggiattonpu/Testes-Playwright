@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      LINK: ${{ secrets.APP_URL }} 
+      APP_URL: ${{ secrets.APP_URL }} 
 
     steps:
       - name: Checkout do código
